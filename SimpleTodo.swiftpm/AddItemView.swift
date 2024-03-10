@@ -23,13 +23,30 @@ struct AddItemView: View {
         //     AddItemView conform to the guideline image
         
         /* BEGIN YOUR CODE */
+        Text("Add Item")
+            .font(.title)
         TextField("Item description", text: $text)
-        Button(action: {
-            todoLogic.add(item: text)
-            isVisible = false
-        }, label: {
-            Text("Add")
-        })
+            .textFieldStyle(.roundedBorder)
+            .padding(.horizontal, 32)
+        HStack{
+            Button(action: {
+                todoLogic.add(item: text)
+                isVisible = false
+            }, label: {
+                Text("Add")
+                    .frame(maxWidth: .infinity)
+            }).buttonStyle(.borderedProminent)
+                .tint(.green)
+                .padding(.leading, 32)
+            Button(action: {
+                isVisible = false
+            }, label: {
+                Text("Cancel").frame(maxWidth: .infinity)
+            }).buttonStyle(.borderedProminent)
+                .tint(.blue)
+                .padding(.trailing, 32)
+        }
+        Spacer()
         /* END YOUR CODE */
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var todoLogic: TodoViewModel
     @State var shouldShowAddView: Bool = false
+    var test = ["Hello", "there"]
     
     // [1] Take a look at this function.
     //     This will fire when the "Demo" button is pressed.
@@ -46,7 +47,11 @@ struct ContentView: View {
                 //     Hint 2: Look at the demo function for deleting an item
                 
                 /* BEGIN YOUR CODE */
-                
+                ForEach(todoLogic.items, id: \.self) { item in
+                    TodoItemView(item: item, deleteAction: {(todoItem) -> () in
+                        todoLogic.delete(item: todoItem)
+                    })
+                }
                 /* END YOUR CODE */
             }
             .navigationTitle("To-do List")

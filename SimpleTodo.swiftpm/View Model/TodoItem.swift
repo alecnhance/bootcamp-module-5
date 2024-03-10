@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TodoItem: Identifiable {
+struct TodoItem: Identifiable, Hashable {
     static var idCounter = 0
     
     var id: Int
